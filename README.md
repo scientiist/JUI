@@ -6,29 +6,46 @@ A library that adds simple GUI elements for you to utilize in your Love2D games.
 ## API
 
 #### UIBase class
+
 *This class is abstracted and exists for only inheritance.*
 
 Methods:
 ```lua
 render()
-update(number deltatime) -- deltatime should be passed from love.update function
+update(number deltatime)                 -- deltatime should be passed from love.update function
 ```
 
-#### UIContainer class
+### UIContainer class
+
 *Inherits UIBase*
 
-#### UIRect class
+Methods:
+```lua
+Vector2D getAbsolutePosition()           -- Always returns a Vector2D with 0, 0
+Vector2D getAbsoluteSize()               -- Always returns a Vector2D with the viewport pixel size
+```
+
+### UIRect class
 *Inherits UIBase*
+
 *This class is abstracted and exists for only inheritance.*
 
-#### Frame class
+Methods:
+```lua
+Vector2D getAbsolutePosition()           -- returns the real position of the object, in pixels
+Vector2D getAbsoluteSize()               -- returns the real size of the object, in pixels
+```
+
+### Frame class
+
 *Inherits UIRect*
 
-#### TextBox class
+### TextBox class
+
 *Inherits UIRect*
 
-#### Dimension datatype
+### Dimension datatype
 
-#### Vector2D datatype
+### Vector2D datatype
 
-#### RGBColor datatype
+### RGBColor datatype
