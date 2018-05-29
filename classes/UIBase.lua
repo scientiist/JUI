@@ -1,5 +1,6 @@
-local newclass = require("YACI")
-
+local newclass = require("classes/YACI")
+local Dimension = require("classes/Dimension")
+local Vector2D = require("classes/Vector2D")
 -- Class --
 local UIBase = newclass("UIBase")
 
@@ -7,6 +8,7 @@ function UIBase:init()
     self.isUIObject = true
     self.active = true
     self.children = {}
+    self.parent = nil
 
 end
 
@@ -29,28 +31,31 @@ end
 
 -- Shown API methods --
 function UIBase:render()
-    if not self.active then return end
+    --if not self.active then return end
 
-    self:renderChildren()
+   --self:renderChildren()
 end
 
 function UIBase:update(delta)
-    if not self.active then return end
+    --if not self.active then return end
 
-    self:updateChildren(delta)
+   --self:updateChildren(delta)
 end
+
 
 function UIBase:getChildren()
     return self.children
 end
 
 function UIBase:addChild(instance)
-    table.insert(self.children, instance)
-    instance.parent = self
+    self.children[#self.children+1] = instance
+end
+
+function UIBase:getParent()
+    return self.parent
 end
 
 function UIBase:setParent(instance)
-    table.insert(instance.children, self)
     self.parent = instance
 end
 
