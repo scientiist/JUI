@@ -9,9 +9,13 @@ A library that adds simple GUI elements for you to utilize in your Love2D games.
 
 *This class is abstracted and exists for only inheritance.*
 
+Constructor(s):
+```lua
+UIBase:new()  -- Unless otherwise specified, all UIBase object constructors take no arguments, as you are to use the other methods for setting properties.
+```
+
 Methods:
 ```lua
-Constructor new()
 render()
 update(number deltatime)                 -- deltatime should be passed from love.update function
 ```
