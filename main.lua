@@ -1,6 +1,6 @@
 _G.stringList = {}
 
-local JUI = require("JUI")
+local JUI = require("JUIlib")
 
 local bigboy = JUI.Dimension:new(0.3, 0.2)
 

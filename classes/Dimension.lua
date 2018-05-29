@@ -33,8 +33,8 @@ function Dimension:getPixelXY()
     return self.x.pixel, self.y.pixel
 end
 
-function Dimension:getPosition()
-
+function Dimension:getComponents()
+    return self:getScaleXY(), self:getPixelXY()
 end
 
 return Dimension
