@@ -133,3 +133,8 @@ Dimension - Dimension
 ### Vector2D datatype
 
 ### RGBColor datatype
+
+## Other Information
+
+### Credits:
+This project utilizes the YACI library. https://github.com/jpatte/yaci.lua
