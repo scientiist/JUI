@@ -5,7 +5,7 @@ A library that adds simple GUI elements for you to utilize in your Love2D games.
 
 ## API
 
-### UIBase class
+#### UIBase class
 *This class is abstracted and exists for only inheritance.*
 
 Methods:
@@ -14,18 +14,21 @@ render()
 update(number deltatime) -- deltatime should be passed from love.update function
 ```
 
-### UIContainer class
+#### UIContainer class
 *Inherits UIBase*
 
-### UIRect class
+#### UIRect class
+*Inherits UIBase*
 *This class is abstracted and exists for only inheritance.*
 
-### Frame class
+#### Frame class
+*Inherits UIRect*
 
-### TextBox class
+#### TextBox class
+*Inherits UIRect*
 
-### Dimension datatype
+#### Dimension datatype
 
-### Vector2D datatype
+#### Vector2D datatype
 
-## RGBColor datatype
+#### RGBColor datatype
