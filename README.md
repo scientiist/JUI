@@ -11,6 +11,7 @@ A library that adds simple GUI elements for you to utilize in your Love2D games.
 
 Methods:
 ```lua
+Constructor new()
 render()
 update(number deltatime)                 -- deltatime should be passed from love.update function
 ```
@@ -35,6 +36,8 @@ Methods:
 RGBColor getBackgroundColor()
 RGBColor getBorderColor()
 number getCornerRounding()
+number getBackgroundTransparency()
+number getBorderTransparency()
 Dimension getPosition()
 Dimension getSize()
 Vector2D getAbsolutePosition()           -- returns the real position of the object, in pixels
@@ -44,6 +47,8 @@ setBorderColor(RGBColor color)
 setCornerRounding(number rounding)
 setPosition(Dimension pos)
 setSize(Dimension size)
+setBackgroundTransparency(number alpha)
+setBorderTransparency(number alpha)
 ```
 
 ### Frame class
@@ -54,7 +59,21 @@ setSize(Dimension size)
 
 *Inherits UIRect*
 
+Methods:
+```lua
+string getFontFace()
+number getTextSize()
+setFontFace(string fontFile)
+setTextSize(number size)
+```
+
 ### Dimension datatype
+
+
+Methods:
+```lua
+
+```
 
 ### Vector2D datatype
 

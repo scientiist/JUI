@@ -22,6 +22,14 @@ function TextBox:recalculateInternalFont()
     end
 end
 
+function TextBox:getFontFace()
+    return self.fontFace
+end
+
+function TextBox:getTextSize()
+    return self.textSize
+end
+
 function TextBox:setFontFace(fontface)
     self.fontFace = fontface
     self:recalculateInternalFont()

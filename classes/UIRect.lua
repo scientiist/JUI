@@ -37,6 +37,18 @@ function UIRect:getCornerRounding()
     return self.cornerRounding
 end
 
+function UIRect:getBorderTransparency()
+    return self.borderTransparency
+end
+
+function UIRect:getBackgroundTransparency()
+    return self.backgroundTransparency
+end
+
+function UIRect:setBackgroundTransparency(alpha)
+    self.backgroundTransparency = alpha
+end
+
 function UIRect:setCornerRounding(rounding)
     self.cornerRounding = rounding
 end
