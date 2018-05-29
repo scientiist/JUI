@@ -3,14 +3,14 @@ A library that adds simple GUI elements for you to utilize in your Love2D games.
 
 ## Basic Setup
 
-Download JUI and place the JUI folder in your project, the library can be required with:
+Download the library and place the JUI folder in your project, the library can be required with:
 
 ```lua
 local JUI = require("JUI/JUIlib") -- I recommend calling the required variable "JUI"
 -- that's what I'll be using in all docs and examples
 
 ```
-The JUIlib object returns the following objects for you to use:
+The JUIlib script returns the following objects for you to use:
 
 - UIContainer
 - Frame
