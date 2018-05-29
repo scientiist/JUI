@@ -7,11 +7,11 @@ A library that adds simple GUI elements for you to utilize in your Love2D games.
 
 #### UIBase class
 
-*This class is abstracted and exists for only inheritance.*
+*This class is abstracted and exists only for inheritance.*
 
 Constructor(s):
 ```lua
-UIBase:new()  -- Unless otherwise specified, all UIBase object constructors take no arguments, as you are to use the other methods for setting properties.
+UIBase:new()  -- Unless otherwise specified, all UIBase object constructors take no arguments.
 ```
 
 Methods:
@@ -33,7 +33,7 @@ Vector2D getAbsoluteSize()               -- Always returns a Vector2D with the v
 ### UIRect class
 *Inherits UIBase*
 
-*This class is abstracted and exists for only inheritance.*
+*This class is abstracted and exists only for inheritance.*
 
 Methods:
 ```lua
@@ -73,10 +73,20 @@ setTextSize(number size)
 
 ### Dimension datatype
 
+Constructor:
+```lua
+Dimension:new(number xScale, number yScale, number xPixel, number yPixel)
+```
 
 Methods:
 ```lua
 
+```
+
+Operators:
+```lua
+Dimension + Dimension
+Dimension - Dimension
 ```
 
 ### Vector2D datatype
