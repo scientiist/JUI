@@ -7,10 +7,10 @@ A library that adds simple GUI elements for you to utilize in your Love2D games.
 
 ### UIBase class (Abstract only)
 
-#### Methods:
+Methods:
 ```lua
- render()
- 
+render()
+update(number deltatime) -- deltatime should be passed from love.update function
 ```
 
 ### UIContainer class
