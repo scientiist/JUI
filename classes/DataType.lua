@@ -1,4 +1,4 @@
-local newclass = require("YACI")
+local newclass = require("classes/YACI")
 
 
 local DataType = newclass("DataType")
