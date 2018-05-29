@@ -5,7 +5,8 @@ A library that adds simple GUI elements for you to utilize in your Love2D games.
 
 ## API
 
-### UIBase class (Abstract only)
+### UIBase class
+*This class is abstracted and exists for only inheritance.*
 
 Methods:
 ```lua
@@ -14,6 +15,10 @@ update(number deltatime) -- deltatime should be passed from love.update function
 ```
 
 ### UIContainer class
+*Inherits UIBase*
+
+### UIRect class
+*This class is abstracted and exists for only inheritance.*
 
 ### Frame class
 
