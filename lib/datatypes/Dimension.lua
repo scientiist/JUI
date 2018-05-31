@@ -1,4 +1,4 @@
-local DataType = require("classes/DataType")
+local DataType = require("lib.datatypes.DataType")
 
 
 local Dimension = DataType:subclass("Dimension")

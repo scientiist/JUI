@@ -1,4 +1,4 @@
-local newclass = require("classes/YACI")
+local newclass = require("lib.YACI")
 
 local Event = newclass("Event")
 

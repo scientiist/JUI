@@ -1,4 +1,4 @@
-local UIRect = require("classes/UIRect")
+local UIRect = require("lib.classes.UIRect")
 
 local Frame = UIRect:subclass("Frame")
 

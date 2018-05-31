@@ -1,4 +1,4 @@
-local DataType = require("classes/DataType")
+local DataType = require("lib.datatypes.DataType")
 
 
 local Vector2D = DataType:subclass("Vector2D")

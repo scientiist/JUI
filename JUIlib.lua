@@ -1,12 +1,12 @@
 return {
-    UIContainer  = require("classes/UIContainer"),
-    Frame        = require("classes/Frame"),
-    TextBox      = require("classes/TextBox"),
+    UIContainer  = require("lib.classes.UIContainer"),
+    Frame        = require("lib.classes.Frame"),
+    TextBox      = require("lib.classes.TextBox"),
 
     -- Datatypes
-    Vector2D     = require("classes/Vector2D"),
-    Dimension    = require("classes/Dimension"),
-    RGBColor     = require("classes/RGBColor"),
+    Vector2D     = require("lib.datatypes.Vector2D"),
+    Dimension    = require("lib.datatypes.Dimension"),
+    RGBColor     = require("lib.datatypes.RGBColor"),
 
     parent = function(parent, child)
         parent:addChild(child)

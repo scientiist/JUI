@@ -1,6 +1,6 @@
-local UIBase = require("classes/UIBase")
-local Dimension = require("classes/Dimension")
-local Vector2D = require("classes/Vector2D")
+local UIBase = require("lib.classes.UIBase")
+local Dimension = require("lib.datatypes.Dimension")
+local Vector2D = require("lib.datatypes.Vector2D")
 
 local UIContainer = UIBase:subclass("UIContainer")
 

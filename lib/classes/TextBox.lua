@@ -1,5 +1,5 @@
-local UIRect = require("classes/UIRect")
-local RGBColor = require("classes/RGBColor")
+local UIRect = require("lib.classes.UIRect")
+local RGBColor = require("lib.datatypes.RGBColor")
 
 local TextBox = UIRect:subclass("TextBox")
 
