@@ -1,3 +1,5 @@
+love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";../JUI/")
+
 return {
     UIContainer  = require("lib.classes.UIContainer"),
     Frame        = require("lib.classes.Frame"),
