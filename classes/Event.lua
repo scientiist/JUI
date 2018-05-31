@@ -1,9 +1,8 @@
-local DataType = require("classes/DataType")
+local newclass = require("classes/YACI")
 
-local Event = DataType:subclass("Event")
+local Event = newclass("Event")
 
 function Event:init()
-    self.super:init()
     self.callbacks = {}
 end
 

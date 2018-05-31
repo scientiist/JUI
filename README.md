@@ -29,6 +29,11 @@ local scene = JUI.UIContainer:new()
 local frame = JUI.Frame:new()
 frame:setBackgroundColor(JUI.RGBColor:new(255, 128, 128))
 
+-- connect a new event listener
+frame.mouseEnter:connect(function()
+
+end)
+
 JUI.parent(scene, frame) -- the current method of setting the parent of an object
 -- first object is the new parent of the second object
 -- I don't particularly like this method, and am looking for an alternative
@@ -97,8 +102,8 @@ setBorderTransparency(number alpha)
 
 Events:
 ```lua
-mouseEnter
-mouseExit
+mouseEnter()
+mouseExit()
 ```
 
 ### Frame class
@@ -115,6 +120,16 @@ string getFontFace()
 number getTextSize()
 setFontFace(string fontFile)
 setTextSize(number size)
+```
+
+### Event class
+Events provide a way for *listeners*, user-defined functions, to be called when certain things happen with JUI objects.
+When an event is "connected", the function given will be called whenever this event is fired by JUI.
+
+Methods:
+```lua
+number connect(function newConnection) -- returns a listenerID which can be used to disconnect the listener later
+disconnect(number listenerID) -- disconnect the listener using the listenerID, so that it is no longer called
 ```
 
 ### Dimension datatype
