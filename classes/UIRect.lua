@@ -2,6 +2,7 @@ local UIBase = require("classes/UIBase")
 local Dimension = require("classes/Dimension")
 local Vector2D = require("classes/Vector2D")
 local RGBColor = require("classes/RGBColor")
+local Event = require("classes/Event")
 
 local UIRect = UIBase:subclass("UIRect")
 
@@ -15,6 +16,10 @@ function UIRect:init()
     self.cornerRounding = 1
     self.size = Dimension:new(0.2, 0.12)
     self.position = Dimension:new(0, 0)
+
+    self.mouseOver = false
+    self.mouseEnter = Event:new()
+    self.mouseExit = Event:new()
 end
 
 function UIRect:getBackgroundColor()
@@ -45,6 +50,10 @@ function UIRect:getBackgroundTransparency()
     return self.backgroundTransparency
 end
 
+function UIRect:isMouseInside()
+    return self.mouseOver
+end
+
 function UIRect:setBackgroundTransparency(alpha)
     self.backgroundTransparency = alpha
 end
@@ -67,6 +76,37 @@ end
 
 function UIRect:getSize()
     return self.size
+end
+
+function UIRect:update(delta)
+    self.super:update(delta)
+
+    local mousePos = Vector2D:new(love.mouse.getX(), love.mouse.getY())
+
+    local pos = self:getAbsolutePosition()
+
+    local size = self:getAbsolutePosition()
+
+    local mouseWithin = true
+    if not (mousePos.x > pos.x) then mouseWithin = false end
+    if not (mousePos.x < (pos.x + size.x)) then mouseWithin = false end
+
+    if not (mousePos.y > pos.y) then mouseWithin = false end
+    if not (mousePos.y < (pos.y + size.y)) then mouseWithin = false end
+
+    if mouseWithin then
+
+        if (self.mouseOver == false) then
+            self.mouseOver = true
+            self.mouseEnter:call()
+           
+        end
+    else
+        if (self.mouseOver == true) then
+            self.mouseOver = false
+            self.mouseExit:call()
+        end
+    end
 end
 
 function UIRect:getAbsoluteSize()

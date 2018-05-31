@@ -85,6 +85,7 @@ Dimension getPosition()
 Dimension getSize()
 Vector2D getAbsolutePosition()           -- returns the real position of the object, in pixels
 Vector2D getAbsoluteSize()               -- returns the real size of the object, in pixels
+boolean isMouseInside()
 setBackgroundColor(RGBColor color)
 setBorderColor(RGBColor color)
 setCornerRounding(number rounding)
@@ -92,6 +93,12 @@ setPosition(Dimension pos)
 setSize(Dimension size)
 setBackgroundTransparency(number alpha)
 setBorderTransparency(number alpha)
+```
+
+Events:
+```lua
+mouseEnter
+mouseExit
 ```
 
 ### Frame class
