@@ -81,8 +81,8 @@ Vector2D getAbsoluteSize()               -- Always returns a Vector2D with the v
 
 Methods:
 ```lua
-RGBColor getBackgroundColor()
-RGBColor getBorderColor()
+Color getBackgroundColor()
+Color getBorderColor()
 number getCornerRounding()
 number getBackgroundTransparency()
 number getBorderTransparency()
@@ -91,8 +91,8 @@ Dimension getSize()
 Vector2D getAbsolutePosition()           -- returns the real position of the object, in pixels
 Vector2D getAbsoluteSize()               -- returns the real size of the object, in pixels
 boolean isMouseInside()
-setBackgroundColor(RGBColor color)
-setBorderColor(RGBColor color)
+setBackgroundColor(Color color)
+setBorderColor(Color color)
 setCornerRounding(number rounding)
 setPosition(Dimension pos)
 setSize(Dimension size)
@@ -117,8 +117,10 @@ mouseExit()
 Methods:
 ```lua
 string getFontFace()
+string getText()
 number getTextSize()
 setFontFace(string fontFile)
+setText(string text)
 setTextSize(number size)
 ```
 
@@ -153,6 +155,10 @@ Dimension - Dimension
 ```
 
 ### Vector2D datatype
+
+### Color datatype
+
+### HexColor datatype
 
 ### RGBColor datatype
 

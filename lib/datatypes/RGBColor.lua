@@ -9,8 +9,12 @@ function RGBColor:init(red, green, blue)
     self.b = blue or 255
 end
 
-function RGBColor:dump()
+function RGBColor:out()
     return self.r/255, self.g/255, self.b/255
+end
+
+function RGBColor:outTable()
+    return {self.r/255, self.g/255, self.b/255}
 end
 
 return RGBColor

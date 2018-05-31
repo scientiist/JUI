@@ -57,7 +57,7 @@ function TextBox:render()
     self.super:render()
 
     love.graphics.setFont(self.font)
-    love.graphics.setColor(self.textColor:dump())
+    love.graphics.setColor(self.textColor:out())
     love.graphics.printf(self.text, absPos.x, absPos.y, absSize.x, self.textAlignment)
 
     love.graphics.setFont(love.graphics.newFont(12))

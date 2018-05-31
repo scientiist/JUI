@@ -20,3 +20,5 @@ function Color:outTable()
         self.b
     }
 end
+
+return Color

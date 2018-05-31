@@ -1,4 +1,4 @@
-love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";../JUI/")
+love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";JUI/?.lua")
 
 return {
     UIContainer  = require("lib.classes.UIContainer"),
@@ -8,6 +8,8 @@ return {
     -- Datatypes
     Vector2D     = require("lib.datatypes.Vector2D"),
     Dimension    = require("lib.datatypes.Dimension"),
+    Color        = require("lib.datatypes.Color"),
+    HexColor     = require("lib.datatypes.HexColor"),
     RGBColor     = require("lib.datatypes.RGBColor"),
 
     parent = function(parent, child)

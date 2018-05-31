@@ -27,6 +27,8 @@ emptyColor.mouseExit:connect(function()
     emptyColor:setText("Outside")
 end)
 
+local backgroundColor = JUI.HexColor:new("#FFFFFF")
+
 JUI.parent(mainmenu, background)
 JUI.parent(mainmenu, emptyColor)
 
@@ -50,6 +52,6 @@ function love.draw()
 
     mainmenu:render()
     
-    love.graphics.setColor((JUI.RGBColor:new(255, 255, 255)):dump())
+    love.graphics.setColor((backgroundColor):out())
     love.graphics.print("fps: "..tostring(love.timer.getFPS()), 4, 4)
 end
