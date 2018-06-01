@@ -7,7 +7,7 @@ local JUI = require("JUIlib")
 
 local bigboy = JUI.Dimension:new(0.3, 0.2)
 
-local mainmenu = JUI.UIContainer:new()
+local mainmenu = JUI.UIContainer:fromFatboy()
 
 local background = JUI.Frame:new()
 background:setSize(bigboy)
