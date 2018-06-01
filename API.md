@@ -81,8 +81,8 @@ When an event is "connected", the function given will be called whenever this ev
 
 Methods:
 ```lua
-number connect(function newConnection) -- returns a listenerID which can be used to disconnect the listener later
-disconnect(number listenerID) -- disconnect the listener using the listenerID, so that it is no longer called
+number connect(function newConnection) -- returns a listenerID
+disconnect(number listenerID) -- disconnect the listener using the listenerID
 ```
 
 ### Dimension datatype
@@ -108,7 +108,11 @@ Dimension - Dimension
 ### Vector2D datatype
 
 ### Color datatype
+Represents color values on a 0-1 decimal range.
 
 ### HexColor datatype
+Represents color values as a hexadecimal string.
 
-### RGBColor datatype
+### IntColor datatype
+
+Represents color values on a 0-255 integer range.
