@@ -7,14 +7,14 @@ local JUI = require("JUIlib")
 
 local bigboy = JUI.Dimension:new(0.3, 0.2)
 
-local mainmenu = JUI.UIContainer:fromFatboy()
+local mainmenu = JUI.JUIScene:fromFatboy()
 
 local background = JUI.Frame:new()
 background:setSize(bigboy)
 background:setPosition(bigboy)
 background:setCornerRounding(0)
 
-local emptyColor = JUI.TextBox:new()
+local emptyColor = JUI.Label:new()
 emptyColor:setSize(JUI.Dimension:new(0.3, 0.1))
 emptyColor:setPosition(JUI.Dimension:new(0.2, 0.8))
 emptyColor:setBackgroundColor(JUI.RGBColor:new(200, 69, 128))

@@ -1,7 +1,31 @@
 local newclass = require("lib.YACI")
 local Dimension = require("lib.datatypes.Dimension")
 local Vector2D = require("lib.datatypes.Vector2D")
--- Class --
+
+--[[
+    UIBase class
+    
+        Internal properties:
+            boolean isUIObject
+            boolean active
+            table<UIBase> children
+            UIBase parent
+
+        Hidden methods:
+            renderChildren()
+            updateChildren(number delta)
+            addChild(UIBase child)
+            setParent(UIBase parent)
+
+        Public methods:
+            table<UIBase> getChildren()
+            UIBase getParent()
+            render()
+            update(number delta)
+        
+        Events:
+            
+]]
 local UIBase = newclass("UIBase")
 
 function UIBase:init()
@@ -12,7 +36,6 @@ function UIBase:init()
 
 end
 
--- Hidden methods --
 function UIBase:renderChildren()
     for _, child in pairs(self.children) do
         if child.isUIObject then
@@ -29,7 +52,6 @@ function UIBase:updateChildren(delta)
     end
 end
 
--- Shown API methods --
 function UIBase:render()
     --if not self.active then return end
 

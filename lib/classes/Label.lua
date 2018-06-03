@@ -1,12 +1,12 @@
 local UIRect = require("lib.classes.UIRect")
 local RGBColor = require("lib.datatypes.RGBColor")
 
-local TextBox = UIRect:subclass("TextBox")
+local Label = UIRect:subclass("Label")
 
-function TextBox:init()
+function Label:init()
     self.super:init()
 
-    self.text = "TextBox"
+    self.text = "Label"
     self.textColor = RGBColor:new(0, 0, 0)
     self.textAlignment = "left"
     self.textSize = 12
@@ -14,7 +14,7 @@ function TextBox:init()
     self.fontFace = nil
 end
 
-function TextBox:recalculateInternalFont()
+function Label:recalculateInternalFont()
     if self.fontFace then
         self.font = love.graphics.newFont(self.font, self.textSize)
     else
@@ -22,33 +22,33 @@ function TextBox:recalculateInternalFont()
     end
 end
 
-function TextBox:getText()
+function Label:getText()
     return self.text
 end
 
-function TextBox:getFontFace()
+function Label:getFontFace()
     return self.fontFace
 end
 
-function TextBox:getTextSize()
+function Label:getTextSize()
     return self.textSize
 end
 
-function TextBox:setText(text)
+function Label:setText(text)
     self.text = text
 end
 
-function TextBox:setFontFace(fontface)
+function Label:setFontFace(fontface)
     self.fontFace = fontface
     self:recalculateInternalFont()
 end
 
-function TextBox:setTextSize(size)
+function Label:setTextSize(size)
     self.textSize = (size >= 1) and size or 1
     self:recalculateInternalFont()
 end
 
-function TextBox:render()
+function Label:render()
     
 
     local absPos = self:getAbsolutePosition()
@@ -64,4 +64,4 @@ function TextBox:render()
     self:renderChildren()
 end
 
-return TextBox
+return Label

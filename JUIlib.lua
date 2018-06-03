@@ -1,9 +1,11 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";JUI/?.lua")
 
 return {
-    UIContainer  = require("lib.classes.UIContainer"),
+    JUIScene     = require("lib.classes.JUIScene"),
     Frame        = require("lib.classes.Frame"),
-    TextBox      = require("lib.classes.TextBox"),
+    Label        = require("lib.classes.Label"),
+    ImageLabel   = require("lib.classes.ImageLabel"),
+    
 
     -- Datatypes
     Vector2D     = require("lib.datatypes.Vector2D"),

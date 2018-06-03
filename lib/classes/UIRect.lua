@@ -4,6 +4,46 @@ local Vector2D = require("lib.datatypes.Vector2D")
 local RGBColor = require("lib.datatypes.RGBColor")
 local Event = require("lib.classes.Event")
 
+--[[
+    UIRect class
+        Inherits UIBase
+    
+        Internal properties:
+            Color backgroundColor
+            Color borderColor
+            number backgroundTransparency
+            number borderTransparency
+            number borderWidth
+            number cornerRounding
+            boolean mouseOver
+            boolean mouseExit
+
+        Hidden methods:
+
+
+        Public methods:
+            Color getBackgroundColor()
+            Color getBorderColor()
+            number getBackgroundTransparency()
+            number getBorderTransparency()
+            number getBorderWidth()
+            number getCornerRounding()
+            Dimension getPosition()
+            Dimension getSize()
+            boolean isMouseInside()
+            setBackgroundColor(Color bg)
+            setBorderColor(Color border)
+            setBackgroundTransparency(number alpha)
+            setBorderTransparency(number alpha)
+            setCornerRounding(number amount)
+            setPosition(Dimension pos)
+            setSize(Dimension size)
+
+        Events:
+            mouseEnter()
+            mouseExit()
+            
+]]
 local UIRect = UIBase:subclass("UIRect")
 
 function UIRect:init()
@@ -16,8 +56,9 @@ function UIRect:init()
     self.cornerRounding = 1
     self.size = Dimension:new(0.2, 0.12)
     self.position = Dimension:new(0, 0)
-
     self.mouseOver = false
+
+    -- events
     self.mouseEnter = Event:new()
     self.mouseExit = Event:new()
 end

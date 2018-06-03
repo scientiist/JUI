@@ -32,7 +32,7 @@ Vector2D getAbsoluteSize()               -- Always returns a Vector2D with the v
 
 Methods:
 ```lua
-Color getBackgroundColor()
+Color getBackgroundColor() 
 Color getBorderColor()
 number getCornerRounding()
 number getBackgroundTransparency()
