@@ -4,8 +4,7 @@ return {
     JUIScene     = require("lib.classes.JUIScene"),
     Frame        = require("lib.classes.Frame"),
     Label        = require("lib.classes.Label"),
-    ImageLabel   = require("lib.classes.ImageLabel"),
-    
+
 
     -- Datatypes
     Vector2D     = require("lib.datatypes.Vector2D"),
