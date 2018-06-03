@@ -2,7 +2,32 @@ local UIRect = require("lib.classes.UIRect")
 local RGBColor = require("lib.datatypes.RGBColor")
 
 local Label = UIRect:subclass("Label")
+--[[
+    Label class
+        Inherits UIRect
+    
+        Internal properties:
+            string text
+            Color textColor
+            string textAlignment
+            number textSize
+            Love2DFont font
+            string fontFace
 
+        Hidden methods:
+            recalculateInternalFont()
+
+        Public methods:
+            string getText()
+            string getFontFace()
+            number getTextSize()
+            setFontFace(String fontFile)
+            setText(string text)
+            setTextSize(number size)
+
+        Events:
+              
+]]
 function Label:init()
     self.super:init()
 

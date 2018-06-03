@@ -6,6 +6,4 @@ function UIButton:init()
 
 end
 
-
-
 return UIButton

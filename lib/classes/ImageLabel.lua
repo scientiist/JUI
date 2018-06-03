@@ -14,4 +14,10 @@ function ImageLabel:setImage(image)
     self.image = image
 end
 
+function ImageLabel:render()
+    self:super:render()
+
+    -- TODO: render image
+end
+
 return ImageLabel

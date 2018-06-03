@@ -20,7 +20,6 @@ local Event = require("lib.classes.Event")
 
         Hidden methods:
 
-
         Public methods:
             Color getBackgroundColor()
             Color getBorderColor()
