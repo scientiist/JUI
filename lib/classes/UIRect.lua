@@ -1,7 +1,7 @@
 local UIBase = require("lib.classes.UIBase")
 local Dimension = require("lib.datatypes.Dimension")
 local Vector2D = require("lib.datatypes.Vector2D")
-local RGBColor = require("lib.datatypes.RGBColor")
+local Color = require("lib.datatypes.Color")
 local Event = require("lib.classes.Event")
 
 --[[
@@ -47,8 +47,8 @@ local UIRect = UIBase:subclass("UIRect")
 
 function UIRect:init()
     self.super:init()
-    self.backgroundColor = RGBColor:new(255, 255, 255)
-    self.borderColor = RGBColor:new(0, 0, 0)
+    self.backgroundColor = Color:new(1, 1, 1)
+    self.borderColor = Color:new(0, 0, 0)
     self.borderWidth = 2
     self.backgroundTransparency = 0
     self.borderTransparency = 0
@@ -56,6 +56,7 @@ function UIRect:init()
     self.size = Dimension:new(0.2, 0.12)
     self.position = Dimension:new(0, 0)
     self.mouseOver = false
+    self.renders = 0
 
     -- events
     self.mouseEnter = Event:new()
@@ -72,6 +73,14 @@ end
 
 function UIRect:getBorderColor()
     return self.borderColor
+end
+
+function UIRect:getBorderWidth()
+    return self.borderWidth
+end
+
+function UIRect:setBorderWidth(width)
+    self.borderWidth = width
 end
 
 function UIRect:setBorderColor(color)
@@ -161,7 +170,8 @@ function UIRect:getAbsoluteSize()
     local absoluteSizeX = size.x.pixel + parentAbsSize.x * size.x.scale
     local absoluteSizeY = size.y.pixel + parentAbsSize.y * size.y.scale
 
-    return Vector2D:new(absoluteSizeX, absoluteSizeY)
+    --return Vector2D:new(absoluteSizeX, absoluteSizeY)
+    return {x = absoluteSizeX, y = absoluteSizeY}
 end
 
 function UIRect:getAbsolutePosition()
@@ -176,7 +186,8 @@ function UIRect:getAbsolutePosition()
     local absolutePosX = parentAbsPos.x + pos.x.pixel + parentAbsSize.x * pos.x.scale
     local absolutePosY = parentAbsPos.y + pos.y.pixel + parentAbsSize.y * pos.y.scale
 
-    return Vector2D:new(absolutePosX, absolutePosY)
+    --return Vector2D:new(absolutePosX, absolutePosY)
+    return {x = absolutePosX, y = absolutePosY}
 end
 
 function UIRect:render()
@@ -186,14 +197,15 @@ function UIRect:render()
 
     love.graphics.setColor(self.borderColor:out())
     -- border
-    love.graphics.rectangle("fill", pos.x-self.borderWidth, pos.y-self.borderWidth, size.x+(self.borderWidth*2), size.y+(self.borderWidth*2), self.cornerRounding, self.cornerRounding)
+    love.graphics.rectangle("line", pos.x-self.borderWidth, pos.y-self.borderWidth, size.x+(self.borderWidth*2), size.y+(self.borderWidth*2), self.cornerRounding, self.cornerRounding)
 
     love.graphics.setColor(self.backgroundColor:out())
     -- background
-    love.graphics.rectangle("fill", pos.x, pos.y, size.x, size.y, self.cornerRounding*(11/12), self.cornerRounding*(11/12))
+    love.graphics.rectangle("fill", pos.x, pos.y, size.x, size.y, self.cornerRounding, self.cornerRounding, 25)
 
-    --self.super:render()
-   -- self:renderChildren()
+    self.super:render()
+    --self:renderChildren()
+    self.renders = self.renders + 1
 end
 
 return UIRect

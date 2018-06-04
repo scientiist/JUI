@@ -1,5 +1,5 @@
 local UIRect = require("lib.classes.UIRect")
-local RGBColor = require("lib.datatypes.RGBColor")
+local Color = require("lib.datatypes.Color")
 
 local Label = UIRect:subclass("Label")
 --[[
@@ -32,7 +32,7 @@ function Label:init()
     self.super:init()
 
     self.text = "Label"
-    self.textColor = RGBColor:new(0, 0, 0)
+    self.textColor = Color:new(0, 0, 0)
     self.textAlignment = "left"
     self.textSize = 12
     self.font = love.graphics.newFont(12)
@@ -51,6 +51,10 @@ function Label:getText()
     return self.text
 end
 
+function Label:getTextAlignment()
+    return self.textAlignment
+end
+
 function Label:getFontFace()
     return self.fontFace
 end
@@ -62,6 +66,11 @@ end
 function Label:setText(text)
     self.text = text
 end
+
+function Label:setTextAlignment(alignment)
+    self.textAlignment = alignment
+end
+
 
 function Label:setFontFace(fontface)
     self.fontFace = fontface
@@ -84,8 +93,7 @@ function Label:render()
     love.graphics.setFont(self.font)
     love.graphics.setColor(self.textColor:out())
     love.graphics.printf(self.text, absPos.x, absPos.y, absSize.x, self.textAlignment)
-
-    love.graphics.setFont(love.graphics.newFont(12))
+    love.graphics.setFont(self.baseReturnFont)
     self:renderChildren()
 end
 

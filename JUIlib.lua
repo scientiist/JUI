@@ -10,8 +10,6 @@ return {
     Vector2D     = require("lib.datatypes.Vector2D"),
     Dimension    = require("lib.datatypes.Dimension"),
     Color        = require("lib.datatypes.Color"),
-    HexColor     = require("lib.datatypes.HexColor"),
-    RGBColor     = require("lib.datatypes.RGBColor"),
 
     parent = function(parent, child)
         parent:addChild(child)

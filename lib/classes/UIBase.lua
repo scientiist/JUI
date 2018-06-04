@@ -33,7 +33,7 @@ function UIBase:init()
     self.active = true
     self.children = {}
     self.parent = nil
-
+    self.baseReturnFont = love.graphics.newFont(12)
 end
 
 function UIBase:renderChildren()
