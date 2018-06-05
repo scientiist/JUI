@@ -35,4 +35,9 @@ function JUIScene:getAbsoluteSize()
     return Vector2D:new(love.graphics.getWidth(), love.graphics.getHeight())
 end
 
+function JUIScene:render()
+    self.super:render()
+    self:renderChildren()
+end
+
 return JUIScene

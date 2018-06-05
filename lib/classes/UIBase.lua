@@ -53,15 +53,11 @@ function UIBase:updateChildren(delta)
 end
 
 function UIBase:render()
-    --if not self.active then return end
 
-   self:renderChildren()
 end
 
 function UIBase:update(delta)
-    --if not self.active then return end
-
-   self:updateChildren(delta)
+    self:updateChildren(delta)
 end
 
 

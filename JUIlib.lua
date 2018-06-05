@@ -4,6 +4,7 @@ return {
     JUIScene     = require("lib.classes.JUIScene"),
     Frame        = require("lib.classes.Frame"),
     Label        = require("lib.classes.Label"),
+    Button       = require("lib.classes.Button"),
 
 
     -- Datatypes
@@ -11,7 +12,7 @@ return {
     Dimension    = require("lib.datatypes.Dimension"),
     Color        = require("lib.datatypes.Color"),
 
-    parent = function(parent, child)
+    parent = function(self, parent, child)
         parent:addChild(child)
         child:setParent(parent)
     end,

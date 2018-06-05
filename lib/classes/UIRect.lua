@@ -52,7 +52,7 @@ function UIRect:init()
     self.borderWidth = 2
     self.backgroundTransparency = 0
     self.borderTransparency = 0
-    self.cornerRounding = 1
+    self.cornerRounding = 0
     self.size = Dimension:new(0.2, 0.12)
     self.position = Dimension:new(0, 0)
     self.mouseOver = false
@@ -127,6 +127,14 @@ function UIRect:getSize()
     return self.size
 end
 
+function UIRect:mouseEnterCall()
+    self.mouseEnter:call()
+end
+
+function UIRect:mouseExitCall()
+    self.mouseExit:call()
+end
+
 function UIRect:update(delta)
     
     self.super:update(delta)
@@ -148,13 +156,13 @@ function UIRect:update(delta)
 
         if (self.mouseOver == false) then
             self.mouseOver = true
-            self.mouseEnter:call()
+            self:mouseEnterCall() 
            
         end
     else
         if (self.mouseOver == true) then
             self.mouseOver = false
-            self.mouseExit:call()
+            self:mouseExitCall()
         end
     end
 end
@@ -192,20 +200,20 @@ function UIRect:getAbsolutePosition()
 end
 
 function UIRect:render()
+    self.super:render()
+
     local pos = self:getAbsolutePosition()
     local size = self:getAbsoluteSize()
 
-    love.graphics.setColor(self.borderColor:out())
-    -- border
-    love.graphics.rectangle("line", pos.x-self.borderWidth, pos.y-self.borderWidth, size.x+(self.borderWidth*2), size.y+(self.borderWidth*2), self.cornerRounding, self.cornerRounding)
-
+   
     love.graphics.setColor(self.backgroundColor:out())
     -- background
     love.graphics.rectangle("fill", pos.x, pos.y, size.x, size.y, self.cornerRounding, self.cornerRounding, 25)
 
-    self.super:render()
-    --self:renderChildren()
-    self.renders = self.renders + 1
+    love.graphics.setColor(self.borderColor:out())
+    love.graphics.setLineWidth(self.borderWidth)
+    -- border
+    love.graphics.rectangle("line", pos.x-(self.borderWidth/2), pos.y-(self.borderWidth/2), size.x+self.borderWidth, size.y+self.borderWidth, self.cornerRounding, self.cornerRounding)
 end
 
 return UIRect

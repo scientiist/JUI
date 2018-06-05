@@ -1,37 +1,12 @@
-local UIRect = require("lib.classes.UIRect")
+local UIButton = require("lib.classes.UIButton")
 local Color = require("lib.datatypes.Color")
 
-local Label = UIRect:subclass("Label")
---[[
-    Label class
-        Inherits UIRect
-    
-        Internal properties:
-            string text
-            Color textColor
-            string textAlignment
-            number textSize
-            Love2DFont font
-            string fontFace
+local Button = UIButton:subclass("Button")
 
-        Hidden methods:
-            recalculateInternalFont()
-
-        Public methods:
-            string getText()
-            string getFontFace()
-            number getTextSize()
-            setFontFace(String fontFile)
-            setText(string text)
-            setTextSize(number size)
-
-        Events:
-              
-]]
-function Label:init()
+function Button:init()
     self.super:init()
 
-    self.text = "Label"
+    self.text = "Button"
     self.textColor = Color:new(0, 0, 0)
     self.textAlignment = "left"
     self.textSize = 12
@@ -39,7 +14,7 @@ function Label:init()
     self.fontFace = nil
 end
 
-function Label:recalculateInternalFont()
+function Button:recalculateInternalFont()
     if self.fontFace then
         self.font = love.graphics.newFont(self.fontFace, self.textSize)
     else
@@ -47,42 +22,41 @@ function Label:recalculateInternalFont()
     end
 end
 
-function Label:getText()
+function Button:getText()
     return self.text
 end
 
-function Label:getTextAlignment()
+function Button:getTextAlignment()
     return self.textAlignment
 end
 
-function Label:getFontFace()
+function Button:getFontFace()
     return self.fontFace
 end
 
-function Label:getTextSize()
+function Button:getTextSize()
     return self.textSize
 end
 
-function Label:setText(text)
+function Button:setText(text)
     self.text = text
 end
 
-function Label:setTextAlignment(alignment)
+function Button:setTextAlignment(alignment)
     self.textAlignment = alignment
 end
 
-
-function Label:setFontFace(fontface)
+function Button:setFontFace(fontface)
     self.fontFace = fontface
     self:recalculateInternalFont()
 end
 
-function Label:setTextSize(size)
+function Button:setTextSize(size)
     self.textSize = (size >= 1) and size or 1
     self:recalculateInternalFont()
 end
 
-function Label:render()
+function Button:render()
     self.super:render()
 
     local absPos = self:getAbsolutePosition()
@@ -92,7 +66,8 @@ function Label:render()
     love.graphics.setColor(self.textColor:out())
     love.graphics.printf(self.text, absPos.x, absPos.y, absSize.x, self.textAlignment)
     love.graphics.setFont(self.baseReturnFont)
+
     self:renderChildren()
 end
 
-return Label
+return Button
