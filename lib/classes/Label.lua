@@ -41,7 +41,7 @@ end
 
 function Label:recalculateInternalFont()
     if self.fontFace then
-        self.font = love.graphics.newFont(self.font, self.textSize)
+        self.font = love.graphics.newFont(self.fontFace, self.textSize)
     else
         self.font = love.graphics.newFont(self.textSize)
     end

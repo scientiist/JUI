@@ -128,8 +128,9 @@ function UIRect:getSize()
 end
 
 function UIRect:update(delta)
+    
     self.super:update(delta)
-
+    
     local mousePos = Vector2D:new(love.mouse.getX(), love.mouse.getY())
 
     local pos = self:getAbsolutePosition()
@@ -191,7 +192,6 @@ function UIRect:getAbsolutePosition()
 end
 
 function UIRect:render()
-
     local pos = self:getAbsolutePosition()
     local size = self:getAbsoluteSize()
 

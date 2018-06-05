@@ -1,28 +1,13 @@
-local DataType = require("lib.datatypes.DataType")
+local Vector2D = {}
 
+setmetatable(Vector2D,{
+    __index = Vector2D,
+    __add = function(a,b) return Vector2D:new(a.x+b.x,a.y+b.y) end,
+    __tostring = function(a) return "("..a.x..','..a.y..")" end
+})
 
-local Vector2D = DataType:subclass("Vector2D")
-
-function Vector2D:__add(vecA, vecB)
-    return Vector2D:new(
-        vecA.x + vecB.x,
-        vecA.y + vecB.y
-    )
-end
-
-function Vector2D:init(x, y)
-    self.super:init()
-
-    self.x = x
-    self.y = y
-end
-
-function Vector2D:getX()
-    return self.x
-end
-
-function Vector2D:getY()
-    return self.y
-end
+function Vector2D:new(x,y)
+    return setmetatable({x=x or 0, y=y or 0}, getmetatable(self))
+end 
 
 return Vector2D
