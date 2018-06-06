@@ -9,7 +9,12 @@ function UIButton:init()
 
     self.mouseClickDown = Event:new()
     self.mouseClickUp = Event:new()
-    self.mouseClickUpOutside = Event:new()
+
+    self.keyboardActivated = Event:new()
+
+    self.pressed = Event:new()
+    self.released = Event:new()
+    self.cancelled = Event:new()
 end
 
 function UIButton:mouseEnterCall()
