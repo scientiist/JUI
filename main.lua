@@ -33,12 +33,12 @@ local button = JUI.Button:new()
     button:setPosition(JUI.Dimension:new(0.2, 0.2))
     button:setBackgroundColor(JUI.Color:new(0.2, 0.3, 0.5))
 
-    button.mouseClick:connect(function()
-        button:setText("THUG")
+    button.mouseClickDown:connect(function()
+        button:setText("Thug")
     end)
 
-    button.mouseClickRelease:connect(function()
-        button:setText("a")
+    button.mouseClickUp:connect(function()
+        button:setText("not Thug")
     end)
 
 

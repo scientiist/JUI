@@ -7,9 +7,9 @@ function UIButton:init()
     self.super:init()
     self.mouseDown = true
 
-    self.mouseClick = Event:new()
-    self.mouseClickReleaseInvalid = Event:new()
-    self.mouseClickRelease = Event:new()
+    self.mouseClickDown = Event:new()
+    self.mouseClickUp = Event:new()
+    self.mouseClickUpOutside = Event:new()
 end
 
 function UIButton:mouseEnterCall()
@@ -25,15 +25,17 @@ function UIButton:update(delta)
 
     if self.mouseOver and love.mouse.isDown(1) then
         self.mouseDown = true
-        self.mouseClickRelease:call()
+        self.mouseClickDown:call()
     end
 
     if self.mouseDown == true then
-        if love.mouse.isDown(1) then
+        if not love.mouse.isDown(1) then
             self.mouseDown = false
 
             if self.mouseOver then
-                self.mouseClick:call()
+                self.mouseClickUp:call()
+            else
+                self.mouseClickUpOutside:call()
             end
         end
     end
