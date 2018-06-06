@@ -6,6 +6,8 @@ local UIButton = UIRect:subclass("UIButton")
 function UIButton:init()
     self.super:init()
     self.mouseDown = true
+    self.buttonActivationAnimation = ""
+    self.buttonDeactivationAnimation = ""
 
     self.mouseClickDown = Event:new()
     self.mouseClickUp = Event:new()

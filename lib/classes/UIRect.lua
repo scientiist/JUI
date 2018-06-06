@@ -206,12 +206,12 @@ function UIRect:render()
     local size = self:getAbsoluteSize()
 
    
-    love.graphics.setColor(self.backgroundColor:out())
+    love.graphics.setColor(self.backgroundColor:out(), self.backgroundTransparency)
     -- background
     love.graphics.rectangle("fill", pos.x, pos.y, size.x, size.y, self.cornerRounding, self.cornerRounding, 25)
 
     love.graphics.setColor(self.borderColor:out())
-    love.graphics.setLineWidth(self.borderWidth)
+    love.graphics.setLineWidth(self.borderWidth, self.borderTransparency)
     -- border
     love.graphics.rectangle("line", pos.x-(self.borderWidth/2), pos.y-(self.borderWidth/2), size.x+self.borderWidth, size.y+self.borderWidth, self.cornerRounding, self.cornerRounding)
 end
