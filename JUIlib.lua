@@ -1,6 +1,6 @@
 love.filesystem.setRequirePath(love.filesystem.getRequirePath() .. ";JUI/?.lua")
 
-
+print("Loading JUI library...")
 
 return {
     JUIScene     = require("lib.classes.JUIScene"),

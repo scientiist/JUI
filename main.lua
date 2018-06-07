@@ -17,21 +17,16 @@ local emptyColor = JUI.Label:new()
     emptyColor:setPosition(JUI.Dimension:new(0.2, 0.8))
     emptyColor:setBorderColor(JUI.Color:new(0.5, 0.5, 0.5))
     emptyColor:setTextSize(22)
-    emptyColor:setBackgroundColor(JUI.Color:new(200/255, 69/255, 128/255))
+    emptyColor:setBackgroundColor(JUI.Color:fromRGB(200, 69, 128, 128))
     emptyColor:setTextAlignment("center")
     emptyColor:setText("Bottom Text")
 
-    emptyColor.mouseEnter:connect(function()
-        emptyColor:setText("Inside")
-    end)
-    emptyColor.mouseExit:connect(function()
-        emptyColor:setText("Outside")
-    end)
+    
 
 local button = JUI.Button:new()
     button:setSize(JUI.Dimension:new(0.3, 0.5))
     button:setPosition(JUI.Dimension:new(0.2, 0.2))
-    button:setBackgroundColor(JUI.Color:new(0.2, 0.3, 0.5))
+    button:setBackgroundColor(JUI.Color:fromHSL(1, 128, 196))
 
     button.mouseClickDown:connect(function()
         button:setText("Thug")
@@ -40,11 +35,23 @@ local button = JUI.Button:new()
     button.mouseClickUp:connect(function()
         button:setText("not Thug")
     end)
+    
+    button.mouseEnter:connect(function()
+        button:setText("Inside")
+    end)
+    button.mouseExit:connect(function()
+        button:setText("Outside")
+    end)
 
 
 JUI:parent(mainmenu, background)
 JUI:parent(mainmenu, emptyColor)
 JUI:parent(background, button)
+
+
+print((JUI.Color:fromHex("#FFF")):out())
+print((JUI.Color:fromHex("#ADFAAD")):out())
+print((JUI.Color:fromHSL(1, 128, 196)):out())
 
 local function round(number, decimalPlaces)
     local placer = 10^(-decimalPlaces)
