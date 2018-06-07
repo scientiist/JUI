@@ -50,8 +50,6 @@ function UIRect:init()
     self.backgroundColor = Color:new(1, 1, 1)
     self.borderColor = Color:new(0, 0, 0)
     self.borderWidth = 2
-    self.backgroundTransparency = 0
-    self.borderTransparency = 0
     self.cornerRounding = 0
     self.size = Dimension:new(0.2, 0.12)
     self.position = Dimension:new(0, 0)
@@ -91,20 +89,8 @@ function UIRect:getCornerRounding()
     return self.cornerRounding
 end
 
-function UIRect:getBorderTransparency()
-    return self.borderTransparency
-end
-
-function UIRect:getBackgroundTransparency()
-    return self.backgroundTransparency
-end
-
 function UIRect:isMouseInside()
     return self.mouseOver
-end
-
-function UIRect:setBackgroundTransparency(alpha)
-    self.backgroundTransparency = alpha
 end
 
 function UIRect:setCornerRounding(rounding)
@@ -204,14 +190,13 @@ function UIRect:render()
 
     local pos = self:getAbsolutePosition()
     local size = self:getAbsoluteSize()
-
-   
-    love.graphics.setColor(self.backgroundColor:out(), self.backgroundTransparency)
+    
+    love.graphics.setColor(self.backgroundColor:out())
     -- background
     love.graphics.rectangle("fill", pos.x, pos.y, size.x, size.y, self.cornerRounding, self.cornerRounding, 25)
 
     love.graphics.setColor(self.borderColor:out())
-    love.graphics.setLineWidth(self.borderWidth, self.borderTransparency)
+    love.graphics.setLineWidth(self.borderWidth)
     -- border
     love.graphics.rectangle("line", pos.x-(self.borderWidth/2), pos.y-(self.borderWidth/2), size.x+self.borderWidth, size.y+self.borderWidth, self.cornerRounding, self.cornerRounding)
 end
