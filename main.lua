@@ -63,6 +63,8 @@ local debugInfoString = ""
 local luaEngineMemory = 0
 local luaHighestMem = 0
 
+local ticktock = 0
+
 function love.load()
     windowCreationSuccess = love.window.setMode(1024, 600, {
         resizable = true,
@@ -76,6 +78,7 @@ function love.load()
 end
 
 function love.update(delta)
+
     mainmenu:update(delta)
 
     luaEngineMemory = round(collectgarbage('count'), 0)

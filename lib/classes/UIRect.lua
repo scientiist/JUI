@@ -129,7 +129,7 @@ function UIRect:update(delta)
 
     local pos = self:getAbsolutePosition()
 
-    local size = self:getAbsolutePosition()
+    local size = self:getAbsoluteSize()
 
     local mouseWithin = true
     if not (mousePos.x > pos.x) then mouseWithin = false end
