@@ -33,12 +33,14 @@ function UIButton:update(delta)
     if self.mouseOver and love.mouse.isDown(1) then
         self.mouseDown = true
         self.mouseClickDown:call()
+        self.pressed:call()
     end
 
     if self.mouseDown == true then
         if not love.mouse.isDown(1) then
             self.mouseDown = false
             self.mouseClickUp:call()
+            self.released:call()
             if not self.mouseOver then
                 self.cancelled:call()
             end

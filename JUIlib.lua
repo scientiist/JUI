@@ -18,4 +18,9 @@ return {
         parent:addChild(child)
         child:setParent(parent)
     end,
+
+    unparent = function(self, parent, child)
+        parent:removeChild(child.name)
+        child:setParent(nil)
+    end
 }

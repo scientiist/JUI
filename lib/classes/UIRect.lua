@@ -154,6 +154,7 @@ function UIRect:update(delta)
 end
 
 function UIRect:getAbsoluteSize()
+
     local pos = self:getPosition()
     local size = self:getSize()
 

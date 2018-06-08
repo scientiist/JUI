@@ -13,6 +13,9 @@ Methods:
 ```lua
 render()
 update(number deltatime)                 -- deltatime should be passed from love.update function
+table<UIBase> getChildren()
+UIBase getChild(string childName)
+UIBase getParent()
 ```
 
 ### UIContainer class
@@ -108,10 +111,16 @@ Dimension - Dimension
 ### Vector2D datatype
 
 ### Color datatype
-Represents color values on a 0-1 decimal range.
+Represents color values.
 
-### HexColor datatype
-Represents color values as a hexadecimal string.
+Constructors:
+```lua
+Color:new() -- will default to fully black
+Color:new(number red, number green, number blue, (optional) number alpha) -- 0-1 double range, alpha defaults to 1 and is not required
+Color:fromRGB(number red, number green, number blue, (optional) number alpha) -- 0-255 integer range
+Color:fromHex(string HexColor, (optional) number alpha) -- takes hexadecimal color codes, can use 3 and 6 character formats
+Color:fromHSL(number hue, number saturation, number lightness, (optional) number alpha) -- HSL color
+```
 
 ### IntColor datatype
 

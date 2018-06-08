@@ -28,7 +28,20 @@ local Vector2D = require("lib.datatypes.Vector2D")
 ]]
 local UIBase = newclass("UIBase")
 
+local charset = {}  do -- [0-9a-zA-Z]
+    for c = 48, 57  do table.insert(charset, string.char(c)) end
+    for c = 65, 90  do table.insert(charset, string.char(c)) end
+    for c = 97, 122 do table.insert(charset, string.char(c)) end
+end
+
+local function randomString(length)
+    if not length or length <= 0 then return '' end
+    math.randomseed(os.clock()^5)
+    return randomString(length - 1) .. charset[math.random(1, #charset)]
+end
+
 function UIBase:init()
+    self.name = randomString(16)
     self.isUIObject = true
     self.active = true
     self.children = {}
@@ -53,13 +66,36 @@ function UIBase:updateChildren(delta)
 end
 
 function UIBase:render()
-
+    if not self.parent then return end
 end
-
 function UIBase:update(delta)
+    if not self.parent then return end
     self:updateChildren(delta)
 end
 
+function UIBase:getName()
+    return self.name
+end
+
+function UIBase:setName(name)
+    self.name = name
+end
+
+function UIBase:getChild(name)
+    for _, obj in pairs(self:getChildren()) do
+        if obj:getName() == name then
+            return obj
+        end
+    end
+end
+
+function UIBase:getFirstChildOfType(type)
+    for _, obj in pairs(self:getChildren()) do
+        if obj.class == type then
+            return obj
+        end
+    end
+end
 
 function UIBase:getChildren()
     return self.children
@@ -67,6 +103,17 @@ end
 
 function UIBase:addChild(instance)
     self.children[#self.children+1] = instance
+end
+
+function UIBase:removeChild(instName)
+    for index, obj in pairs(self:getChildren()) do
+        if obj:getName() == instName then
+            local object = obj
+            self.children[index] = nil
+
+            return obj
+        end
+    end
 end
 
 function UIBase:getParent()

@@ -10,18 +10,17 @@ local bigboy = JUI.Dimension:new(0.6, 0.6)
 local mainmenu = JUI.JUIScene:new()
 
 local background = JUI.Frame:new()
+    background:setName("Background")
     background:setSize(bigboy)
 
-local emptyColor = JUI.Label:new()
+local emptyColor = JUI.Label:new("EmptyColor")
     emptyColor:setSize(JUI.Dimension:new(0.3, 0.1))
     emptyColor:setPosition(JUI.Dimension:new(0.2, 0.8))
     emptyColor:setBorderColor(JUI.Color:new(0.5, 0.5, 0.5))
     emptyColor:setTextSize(22)
     emptyColor:setBackgroundColor(JUI.Color:fromRGB(200, 69, 128, 128))
     emptyColor:setTextAlignment("center")
-    emptyColor:setText("Bottom Text")
-
-    
+    emptyColor:setText("Bottom Text")  
 
 local button = JUI.Button:new()
     button:setSize(JUI.Dimension:new(0.3, 0.5))
@@ -48,7 +47,6 @@ JUI:parent(mainmenu, background)
 JUI:parent(mainmenu, emptyColor)
 JUI:parent(background, button)
 
-
 print((JUI.Color:fromHex("#FFF")):out())
 print((JUI.Color:fromHex("#ADFAAD")):out())
 print((JUI.Color:fromHSL(1, 128, 196)):out())
@@ -74,7 +72,6 @@ function love.load()
         minheight = 480,
     })
     love.graphics.setBackgroundColor(0.7, 0.8, 1)
-    
 end
 
 function love.update(delta)

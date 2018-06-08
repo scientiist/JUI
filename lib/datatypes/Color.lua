@@ -2,9 +2,9 @@ local Color = {}
 
 setmetatable(Color,{
     __index = Color,
-    __add = function(a,b) return Color:new() end,
-    __tostring = function(a) return "("..a.x..','..a.y..")" end
+    __tostring = function(a) return "JUI.Color datatype" end
 })
+
 
 function Color:new(red, green, blue, alpha)
     return setmetatable({

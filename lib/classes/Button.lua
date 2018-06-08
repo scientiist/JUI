@@ -5,7 +5,6 @@ local Button = UIButton:subclass("Button")
 
 function Button:init()
     self.super:init()
-
     self.text = "Button"
     self.textColor = Color:new(0, 0, 0)
     self.textAlignment = "left"
