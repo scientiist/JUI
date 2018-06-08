@@ -18,10 +18,12 @@ UIBase:new()  -- Unless otherwise specified, all UIBase object constructors take
 Methods:
 ```lua
 render()
-update(number deltatime)                 -- deltatime should be passed from love.update function
+update(number deltatime) -- deltatime should be passed from love.update function
 table<UIBase> getChildren()
 UIBase getChild(string childName)
 UIBase getParent()
+string getName() -- name defaults to 16-character random string
+setName(string name)
 ```
 
 ### UIContainer class
@@ -30,8 +32,8 @@ UIBase getParent()
 
 Methods:
 ```lua
-Vector2D getAbsolutePosition()           -- Always returns a Vector2D with 0, 0
-Vector2D getAbsoluteSize()               -- Always returns a Vector2D with the viewport pixel size
+Vector2D getAbsolutePosition() -- Always returns a Vector2D with 0, 0
+Vector2D getAbsoluteSize() -- Always returns a Vector2D with the viewport pixel size
 ```
 
 ### UIRect class
@@ -48,8 +50,8 @@ number getBackgroundTransparency()
 number getBorderTransparency()
 Dimension getPosition()
 Dimension getSize()
-Vector2D getAbsolutePosition()           -- returns the real position of the object, in pixels
-Vector2D getAbsoluteSize()               -- returns the real size of the object, in pixels
+Vector2D getAbsolutePosition() -- returns the real position of the object, in pixels
+Vector2D getAbsoluteSize() -- returns the real size of the object, in pixels
 boolean isMouseInside()
 setBackgroundColor(Color color)
 setBorderColor(Color color)
@@ -98,7 +100,7 @@ disconnect(number listenerID) -- disconnect the listener using the listenerID
 
 Constructor:
 ```lua
-Dimension:new(number xScale, number yScale, number xPixel, number yPixel)
+Dimension:new(number xScale, number yScale, number xPixel = 0, number yPixel = 0)
 ```
 
 Methods:
