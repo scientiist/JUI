@@ -1,17 +1,16 @@
 --[[
-    This is an example project, demonstrating the ways that JUI can be utilized.
+    This is an example project, demonstrating how to use JUI,
+    and what can be done with it.
 
 ]]--
 
 local JUI = require("JUIlib")
 
-local bigboy = JUI.Dimension:new(0.6, 0.6)
-
 local mainmenu = JUI.JUIScene:new()
 
 local background = JUI.Frame:new()
     background:setName("Background")
-    background:setSize(bigboy)
+    background:setSize(JUI.Dimension:new(0.6, 0.6))
 
 local emptyColor = JUI.Label:new("EmptyColor")
     emptyColor:setSize(JUI.Dimension:new(0.3, 0.1))
@@ -19,7 +18,7 @@ local emptyColor = JUI.Label:new("EmptyColor")
     emptyColor:setBorderColor(JUI.Color:new(0.5, 0.5, 0.5))
     emptyColor:setTextSize(22)
     emptyColor:setBackgroundColor(JUI.Color:fromRGB(200, 69, 128, 128))
-    emptyColor:setTextAlignment("center")
+    emptyColor:setTextAlignment(JUI.TextAlignment.CENTER)
     emptyColor:setText("Bottom Text")  
 
 local button = JUI.Button:new()

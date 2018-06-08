@@ -13,6 +13,12 @@ return {
     Vector2D     = require("lib.datatypes.Vector2D"),
     Dimension    = require("lib.datatypes.Dimension"),
     Color        = require("lib.datatypes.Color"),
+    
+    TextAlignment = {
+        LEFT = "left",
+        RIGHT = "right",
+        CENTER = "center",
+    },
 
     parent = function(self, parent, child)
         parent:addChild(child)

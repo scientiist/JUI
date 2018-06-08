@@ -6,6 +6,15 @@ parent(UIBase parent, UIBase child)
 unparent(UIBase parent, UIBase child)
 ```
 
+JUI enums:
+
+TextAlignment
+```lua
+LEFT
+RIGHT
+CENTER
+```
+
 ### UIBase class
 
 *This class is abstracted and exists only for inheritance.*
