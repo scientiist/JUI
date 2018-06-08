@@ -21,14 +21,14 @@ local scene = JUI.JUIScene:new()
 
 local frame = JUI.Frame:new()
     frame:setName("BackgroundFrame")
-    frame:setBackgroundColor(JUI.RGBColor:new(255, 128, 128))
+    frame:setBackgroundColor(JUI.Color:new(1, 0.5, 0.5))
 
 -- connect a new event listener
 frame.mouseEnter:connect(function()
 
 end)
 
-JUI.parent(scene, frame) -- the current method of setting the parent of an object
+JUI:parent(scene, frame) -- the current method of setting the parent of an object
 -- first object is the new parent of the second object
 -- I don't particularly like this method, and am looking for an alternative
 
