@@ -6,7 +6,7 @@ parent(UIBase parent, UIBase child)
 unparent(UIBase parent, UIBase child)
 ```
 
-#### UIBase class
+### UIBase class
 
 *This class is abstracted and exists only for inheritance.*
 
@@ -26,7 +26,7 @@ string getName() -- name defaults to 16-character random string
 setName(string name)
 ```
 
-### UIContainer class
+### JUIScene class
 
 *Inherits UIBase*
 
@@ -72,7 +72,9 @@ mouseExit()
 
 *Inherits UIRect*
 
-### TextBox class
+*This class is abstracted and exists only for inheritance.*
+
+### Label class
 
 *Inherits UIRect*
 
@@ -84,6 +86,34 @@ number getTextSize()
 setFontFace(string fontFile)
 setText(string text)
 setTextSize(number size)
+```
+
+### UIButton class
+
+*Inherits UIRect*
+
+Methods:
+```lua
+
+```
+
+Events:
+```lua
+
+```
+
+### Button class
+
+*Inherits UIButton*
+
+Methods:
+```lua
+
+```
+
+Events:
+```lua
+
 ```
 
 ### Event class
