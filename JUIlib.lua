@@ -7,7 +7,7 @@ return {
     Frame        = require("lib.classes.Frame"),
     Label        = require("lib.classes.Label"),
     Button       = require("lib.classes.Button"),
-
+    Slider       = require("lib.classes.Slider"),
 
     -- Datatypes
     Vector2D     = require("lib.datatypes.Vector2D"),
@@ -18,6 +18,11 @@ return {
         LEFT = "left",
         RIGHT = "right",
         CENTER = "center",
+    },
+
+    Orientation = {
+        VERTICAL = "vertical",
+        HORIZONTAL = "horizontal"
     },
 
     parent = function(self, parent, child)

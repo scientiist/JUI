@@ -66,10 +66,8 @@ function UIBase:updateChildren(delta)
 end
 
 function UIBase:render()
-    if not self.parent then return end
 end
 function UIBase:update(delta)
-    if not self.parent then return end
     self:updateChildren(delta)
 end
 
