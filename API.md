@@ -72,8 +72,6 @@ mouseExit()
 
 *Inherits UIRect*
 
-
-
 ### Label class
 
 *Inherits UIRect*
@@ -94,29 +92,20 @@ setTextSize(number size)
 
 *This class is abstracted and exists only for inheritance.*
 
-Methods:
-```lua
-
-```
 
 Events:
 ```lua
-
+mouseClickDown()
+mouseClickUp()
+pressed()
+released()
+cancelled()
 ```
 
 ### Button class
 
-*Inherits UIButton*
+*Inherits UIButton and Label*
 
-Methods:
-```lua
-
-```
-
-Events:
-```lua
-
-```
 
 ### Event class
 Events provide a way for *listeners*, user-defined functions, to be called when certain things happen with JUI objects.
