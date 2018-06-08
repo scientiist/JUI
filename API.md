@@ -1,5 +1,11 @@
 ## API
 
+JUI methods:
+```lua
+parent(UIBase parent, UIBase child)
+unparent(UIBase parent, UIBase child)
+```
+
 #### UIBase class
 
 *This class is abstracted and exists only for inheritance.*
@@ -110,18 +116,19 @@ Dimension - Dimension
 
 ### Vector2D datatype
 
+Constructor:
+```lua
+Vector2D:new(number x, number y)
+```
+
 ### Color datatype
 Represents color values.
 
 Constructors:
 ```lua
 Color:new() -- will default to fully black
-Color:new(number red, number green, number blue, (optional) number alpha) -- 0-1 double range, alpha defaults to 1 and is not required
-Color:fromRGB(number red, number green, number blue, (optional) number alpha) -- 0-255 integer range
-Color:fromHex(string HexColor, (optional) number alpha) -- takes hexadecimal color codes, can use 3 and 6 character formats
-Color:fromHSL(number hue, number saturation, number lightness, (optional) number alpha) -- HSL color
+Color:new(number red, number green, number blue, number alpha = 1) -- 0-1 double range
+Color:fromRGB(number red, number green, number blue, number alpha = 255) -- 0-255 integer range
+Color:fromHex(string HexColor, number alpha = 255) -- takes hexadecimal color codes
+Color:fromHSL(number hue, number saturation, number lightness, number alpha = 255) -- HSL color
 ```
-
-### IntColor datatype
-
-Represents color values on a 0-255 integer range.
