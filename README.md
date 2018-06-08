@@ -10,24 +10,18 @@ local JUI = require("JUI/JUIlib") -- I recommend calling the required variable "
 -- that's what I'll be using in all docs and examples
 
 ```
-The JUIlib script returns the following objects for you to use:
 
-- UIContainer
-- Frame
-- TextBox
-- Dimension
-- Vector2D
-- RGBColor
-- parent() function
+To set up a basic UI scene, a JUIScene is created and objects to be rendered are parented to it. The JUIScene must be rendered and updated inside the appropriate Love2D functions.
 
-To set up a basic UI scene, a UIContainer is created and objects to be rendered are parented to it. The UIContainer must be rendered and updated inside the appropriate Love2D functions.
+The full API docs can be found in the API.md file.
 
 ```lua
 -- creates a UIContainer and a Frame object, and renders them.
-local scene = JUI.UIContainer:new()
+local scene = JUI.JUIScene:new()
 
 local frame = JUI.Frame:new()
-frame:setBackgroundColor(JUI.RGBColor:new(255, 128, 128))
+    frame:setName("BackgroundFrame")
+    frame:setBackgroundColor(JUI.RGBColor:new(255, 128, 128))
 
 -- connect a new event listener
 frame.mouseEnter:connect(function()

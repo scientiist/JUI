@@ -72,7 +72,7 @@ mouseExit()
 
 *Inherits UIRect*
 
-*This class is abstracted and exists only for inheritance.*
+
 
 ### Label class
 
@@ -91,6 +91,8 @@ setTextSize(number size)
 ### UIButton class
 
 *Inherits UIRect*
+
+*This class is abstracted and exists only for inheritance.*
 
 Methods:
 ```lua
