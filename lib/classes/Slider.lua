@@ -25,4 +25,4 @@ function Slider:update(delta)
 
 end
 
-return slider
+return Slider

@@ -13,6 +13,8 @@ return {
     Vector2D     = require("lib.datatypes.Vector2D"),
     Dimension    = require("lib.datatypes.Dimension"),
     Color        = require("lib.datatypes.Color"),
+
+    Utils        = require("lib.utils.JUtils"),
     
     TextAlignment = {
         LEFT = "left",
@@ -22,7 +24,7 @@ return {
 
     Orientation = {
         VERTICAL = "vertical",
-        HORIZONTAL = "horizontal"
+        HORIZONTAL = "horizontal",
     },
 
     parent = function(self, parent, child)

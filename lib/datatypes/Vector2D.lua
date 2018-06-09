@@ -1,13 +1,25 @@
 local Vector2D = {}
 
-setmetatable(Vector2D,{
-    __index = Vector2D,
-    __add = function(a,b) return Vector2D:new(a.x+b.x,a.y+b.y) end,
-    __tostring = function(a) return "("..a.x..','..a.y..")" end
-})
+local meta = {}
+meta.__index = Vector2D
 
-function Vector2D:new(x,y)
-    return setmetatable({x=x or 0, y=y or 0}, getmetatable(self))
-end 
+function meta.__add(vecA, vecB)
+    return Vector2D:new(vecA.x + vecB.x, vecA.y + vecB.y)
+end
+
+function meta.__tostring(vec)
+    return string.format("Vector2D: %d, %d", vec.x, vec.y)
+end
+
+setmetatable(Vector2D, meta)
+
+function Vector2D:new(x, y)
+
+    local object = {}
+        object.x = x or 0
+        object.y = y or 0
+    
+    return setmetatable(object, getmetatable(self))
+end
 
 return Vector2D
