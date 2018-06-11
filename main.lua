@@ -10,6 +10,8 @@ local mainmenu = JUI.JUIScene:new()
 
 
 local testSlider = JUI.Slider:new()
+    testSlider:setPosition(JUI.Dimension:new(0.3, 0.2))
+    testSlider:setSize(JUI.Dimension:new(0.4, 0.1))
 
 
 JUI:parent(mainmenu, testSlider)
