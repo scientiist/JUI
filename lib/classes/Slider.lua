@@ -8,8 +8,8 @@ local Slider = UIButton:subclass("Slider")
 function Slider:init()
     self.super:init()
 
-    self.valueRange = {0, 100}
-    self.valueIncrement = 5
+    self.valueRange = {2, 32}
+    self.valueIncrement = 2
     self.defaultValue = 50
     self.value = self.defaultValue
     self.smooth = true
@@ -33,7 +33,7 @@ function Slider:doMouseActionCalculations()
     -- where the mouse is, inside of the slider
     local mousePosition = (love.mouse.getX() - self:getAbsolutePosition().x)
 
-    -- so that the mouse is in the middle
+    -- so that the scrub is put in the middle of the mouse
     local scrubPos = mousePosition-(self.scrubXSize/2)
 
     -- clamp the value so it never leaves the slider
@@ -56,10 +56,13 @@ function Slider:lockValues()
 
     print(increments)
 
-    self.valuePercent = math.floor(self.valuePercent*increments)/increments
-    self.scrubDrawPosition = math.floor(self.scrubDrawPosition*increments)/increments
+    --self.valuePercent = math.floor(self.valuePercent*increments)/increments
+    --self.scrubDrawPosition = math.floor(self.scrubDrawPosition*increments)/increments
 
-    local thing = self.valuePercent*(range+self.valueRange[2])
+    self.valuePercent = (math.floor((self.valuePercent*range)/self.valueIncrement)*self.valueIncrement)/range
+    self.scrubDrawPosition = (math.floor((self.scrubDrawPosition*range)/self.valueIncrement)*self.valueIncrement)/range
+
+    local thing = (self.valuePercent*range)+self.valueRange[1]
 
     print(thing)
 end
@@ -85,7 +88,7 @@ function Slider:render()
     -- render the thing object idk
 
     love.graphics.setColor(self.scrubColor:out())
-    love.graphics.rectangle("fill", self:getAbsolutePosition().x+(self.getAbsoluteSize().x*self.scrubDrawPosition), self.getAbsolutePosition().y, self.scrubXSize, self.getAbsoluteSize().y)
+    love.graphics.rectangle("fill", self:getAbsolutePosition().x+(self.getAbsoluteSize().x*self.scrubDrawPosition), self.getAbsolutePosition().y, self.scrubXSize+1, self.getAbsoluteSize().y)
 
     self:renderChildren()
 end
