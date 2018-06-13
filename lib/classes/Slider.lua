@@ -8,21 +8,49 @@ local Slider = UIButton:subclass("Slider")
 function Slider:init()
     self.super:init()
 
-    self.valueRange = {-50, 50}
-    self.valueIncrement = 5
-    self.defaultValue = 0
-    self.value = self.defaultValue
-    self.smooth = true
+    self.minValue = 0
+    self.maxValue = 100
+    self.valueIncrement = 10
+    self.value = 10
+    self.smooth = false
     self.orientation = "vertical"
 
-    self.valueChange = Event:new()
+    self.valueChanged = Event:new()
 
     self.valuePercent = 0
     self.scrubDrawPosition = 0
 
     self.scrubXSize = 20
-    self.scrubColor = Color:new(0.5, 0.5, 0.5)
-    
+    self.scrubColor = Color:new(0.5, 0.5, 0.5) 
+end
+
+function Slider:getValueIncrement()
+    return self.valueIncrement
+end
+
+function Slider:getValue()
+    return self.value
+end
+
+function Slider:getOrientation()
+    return self.orientation
+end
+
+function Slider:getValueRange()
+    return self.minValue, self.maxValue
+end
+
+function Slider:setValueRange(min, max)
+    self.minValue = min
+    self.maxValue = max
+end
+
+function Slider:setValueIncrement(inc)
+    self.valueIncrement = inc
+end
+
+function Slider:setValue(val)
+    self.value = val
 end
 
 function Slider:doMouseMoveCalculations()
@@ -41,23 +69,22 @@ function Slider:doMouseMoveCalculations()
 
     local percent = (positionClamped/effectiveSize)
 
-    local range = self.valueRange[2]-self.valueRange[1]
+    local range = self.maxValue-self.minValue
 
-    local val = JUtils.NearestMultiple(percent*range, self.valueIncrement)--+self.valueRange[1]
+    local val = JUtils.NearestMultiple(percent*range, self.valueIncrement)
 
    -- self.valuePercent = val/range
 
-    val = val + self.valueRange[1]
-
-    self.value = val
-
-    
-
+    val = val + self.minValue
+    if val ~= self.value then
+        self.value = val
+        self.valueChanged:call()
+    end
 end
 
 function Slider:updateScrubPos()
-    local range = self.valueRange[2]-self.valueRange[1]
-    self.valuePercent = (self.value-self.valueRange[1])/range
+    local range = self.maxValue-self.minValue
+    self.valuePercent = (self.value-self.minValue)/range
     self.scrubDrawPosition = (self.valuePercent*(self:getAbsoluteSize().x-self.scrubXSize))/self:getAbsoluteSize().x
 end
 
@@ -71,14 +98,12 @@ function Slider:update(delta)
 
     if self.mouseDown then
         self:doMouseMoveCalculations()
-
     end
 
 end
 
 function Slider:render()
     self.super:render()
-
 
     -- render the thing object idk
 
