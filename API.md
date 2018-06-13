@@ -131,6 +131,7 @@ setValue(number val)
 
 Events:
 ```lua
+valueChanged(number newValue)
 ```
 
 

@@ -78,7 +78,7 @@ function Slider:doMouseMoveCalculations()
     val = val + self.minValue
     if val ~= self.value then
         self.value = val
-        self.valueChanged:call()
+        self.valueChanged:call(self.value)
     end
 end
 
