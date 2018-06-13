@@ -115,6 +115,24 @@ cancelled()
 
 *Inherits UIButton and Label*
 
+### Slider class
+
+*Inherits UIButton*
+
+Methods:
+```lua
+number, number getValueRange()
+number getValueIncrement()
+number getValue()
+setValueRange(number min, number max)
+setValueIncrement(number inc)
+setValue(number val)
+```
+
+Events:
+```lua
+```
+
 
 ### Event class
 Events provide a way for *listeners*, user-defined functions, to be called when certain things happen with JUI objects.
