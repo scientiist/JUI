@@ -7,7 +7,8 @@ function Button:init()
     self.super:init()
     self.text = "Button"
     self.textColor = Color:new(0, 0, 0)
-    self.textAlignment = "left"
+    self.textXAlignment = "left"
+    self.textYAlignment = "top"
     self.textSize = 12
     self.font = love.graphics.newFont(12)
     self.fontFace = nil
@@ -26,7 +27,7 @@ function Button:getText()
 end
 
 function Button:getTextAlignment()
-    return self.textAlignment
+    return self.textXAlignment, self.textYAlignment
 end
 
 function Button:getFontFace()
@@ -41,8 +42,9 @@ function Button:setText(text)
     self.text = text
 end
 
-function Button:setTextAlignment(alignment)
-    self.textAlignment = alignment
+function Button:setTextAlignment(xAlignment, yAlignment)
+    self.textXAlignment = xAlignment
+    self.textYAlignment = yAlignment
 end
 
 function Button:setFontFace(fontface)
@@ -63,7 +65,15 @@ function Button:render()
 
     love.graphics.setFont(self.font)
     love.graphics.setColor(self.textColor:out())
-    love.graphics.printf(self.text, absPos.x, absPos.y, absSize.x, self.textAlignment)
+
+    local drawYPos = absPos.y
+    local textHeight = self.font:getHeight()
+
+    if self.textYAlignment == "center" then drawYPos = drawYPos + (absSize.y/2) - (textHeight/2) end
+    if self.textYAlignment == "bottom" then drawYPos = drawYPos + absSize.y - textHeight end
+
+
+    love.graphics.printf(self.text, absPos.x, absPos.y, absSize.x, self.textXAlignment)
     love.graphics.setFont(self.baseReturnFont)
 
     self:renderChildren()

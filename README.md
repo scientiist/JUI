@@ -8,6 +8,12 @@ A library that adds simple GUI elements for you to utilize in your Love2D games.
 * FOSS, designed to be easily extended to fit your game's needs
 * Automatic element scaling
 
+## Planned Features
+
+* Text Scaling
+* List and Grid elements
+* Scrollbar element
+
 
 The full API docs can be found in the API.md file.
 
@@ -48,14 +54,13 @@ JUI:parent(scene, frame) -- the current method of setting the parent of an objec
 -- I don't particularly like this method, and am looking for an alternative
 
 function love.update(delta)
-    scene:update(delta) -- the UIContainer will recursively call update(delta) on all descendants
+    scene:update(delta) -- the JUIScene will recursively call update(delta) on all descendants
 end
 
 function love.draw()
     scene:render() -- same thing with render()
 end
 ```
-
 
 ## Other Information
 

@@ -33,7 +33,8 @@ function Label:init()
 
     self.text = "Label"
     self.textColor = Color:new(0, 0, 0)
-    self.textAlignment = "left"
+    self.textXAlignment = "left"
+    self.textYAlignment = "top"
     self.textSize = 12
     self.font = love.graphics.newFont(12)
     self.fontFace = nil
@@ -52,7 +53,7 @@ function Label:getText()
 end
 
 function Label:getTextAlignment()
-    return self.textAlignment
+    return self.textXAlignment, self.textYAlignment
 end
 
 function Label:getFontFace()
@@ -67,10 +68,10 @@ function Label:setText(text)
     self.text = text
 end
 
-function Label:setTextAlignment(alignment)
-    self.textAlignment = alignment
+function Label:setTextAlignment(xAlignment, yAlignment)
+    self.textXAlignment = xAlignment
+    self.textYAlignment = yAlignment
 end
-
 
 function Label:setFontFace(fontface)
     self.fontFace = fontface
@@ -90,7 +91,15 @@ function Label:render()
 
     love.graphics.setFont(self.font)
     love.graphics.setColor(self.textColor:out())
-    love.graphics.printf(self.text, absPos.x, absPos.y, absSize.x, self.textAlignment)
+
+    local drawYPos = absPos.y
+    local textHeight = self.font:getHeight()
+
+    if self.textYAlignment == "center" then drawYPos = drawYPos + (absSize.y/2) - (textHeight/2) end
+    if self.textYAlignment == "bottom" then drawYPos = drawYPos + absSize.y - textHeight end
+
+
+    love.graphics.printf(self.text, absPos.x, drawYPos, absSize.x, self.textXAlignment)
     love.graphics.setFont(self.baseReturnFont)
     self:renderChildren()
 end

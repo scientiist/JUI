@@ -16,10 +16,16 @@ return {
 
     Utils        = require("lib.utils.JUtils"),
     
-    TextAlignment = {
+    TextXAlign = {
         LEFT = "left",
         RIGHT = "right",
         CENTER = "center",
+    },
+
+    TextYAlign = {
+        TOP = "top",
+        CENTER = "center",
+        BOTTOM = "bottom",
     },
 
     Orientation = {

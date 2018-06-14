@@ -12,13 +12,28 @@ local mainmenu = JUI.JUIScene:new()
 
 
 local testSlider = JUI.Slider:new() do -- just formatting 
-    testSlider:setPosition(JUI.Dimension:new(0.3, 0.2))
-    testSlider:setSize(JUI.Dimension:new(0.4, 0.1))
+    testSlider:setPosition(JUI.Dimension:new(0, 0.05, 10, 10))
+    testSlider:setSize(JUI.Dimension:new(0.2, 0.05))
     testSlider:setValueRange(2, 32)
     testSlider:setValueIncrement(2)
 end
 
+local text = JUI.Label:new() do
+    text:setPosition(JUI.Dimension:new(0.2, 0.05, 20, 10))
+    text:setSize(JUI.Dimension:new(0.1, 0.05))
+    text:setText("Slider: "..testSlider:getValue())
+    text:setTextSize(18)
+    text:setTextAlignment(JUI.TextXAlign.CENTER, JUI.TextYAlign.CENTER)
+end
+
+testSlider.valueChanged:connect(function(newVal)
+    text:setText("Slider: "..newVal)
+end)
+
+
+
 JUI:parent(mainmenu, testSlider)
+JUI:parent(mainmenu, text)
 
 local windowCreationSuccess
 local debugInfoString = ""

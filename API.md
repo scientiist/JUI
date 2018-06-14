@@ -8,12 +8,20 @@ unparent(UIBase parent, UIBase child)
 
 JUI enums:
 
-TextAlignment
+TextXAlign
 ```lua
 LEFT
 RIGHT
 CENTER
 ```
+
+TextYAlign
+```
+TOP
+BOTTOM
+CENTER
+```
+
 
 ### UIBase class
 
@@ -90,9 +98,11 @@ Methods:
 string getFontFace()
 string getText()
 number getTextSize()
+string, string getTextAlignment()
 setFontFace(string fontFile)
 setText(string text)
 setTextSize(number size)
+setTextAlignment(string xAlignment, string yAlignment)
 ```
 
 ### UIButton class
