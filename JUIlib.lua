@@ -35,5 +35,7 @@ return {
     unparent = function(self, parent, child)
         parent:removeChild(child.name)
         child:setParent(nil)
-    end
+    end,
+
+    version = "0.1pre",
 }

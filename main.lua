@@ -2,6 +2,8 @@
     This is an example project, demonstrating how to use JUI,
     and what can be done with it.
 
+
+    You should probably remove this when you drop JUI into your project.
 ]]--
 
 local JUI = require("JUIlib")
@@ -9,12 +11,12 @@ local JUI = require("JUIlib")
 local mainmenu = JUI.JUIScene:new()
 
 
-local testSlider = JUI.Slider:new()
+local testSlider = JUI.Slider:new() do -- just formatting 
     testSlider:setPosition(JUI.Dimension:new(0.3, 0.2))
     testSlider:setSize(JUI.Dimension:new(0.4, 0.1))
     testSlider:setValueRange(2, 32)
     testSlider:setValueIncrement(2)
-
+end
 
 JUI:parent(mainmenu, testSlider)
 
