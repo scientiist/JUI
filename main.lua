@@ -30,6 +30,10 @@ testSlider.valueChanged:connect(function(newVal)
     text:setText("Slider: "..newVal)
 end)
 
+local bigBalls = JUI.Frame:new() do
+    bigBalls:setPosition(JUI.Dimension:new())
+end
+
 
 
 JUI:parent(mainmenu, testSlider)
@@ -53,7 +57,9 @@ function love.load()
     love.graphics.setBackgroundColor(0.7, 0.8, 1)
 end
 
+
 function love.update(delta)
+
 
     mainmenu:update(delta)
 

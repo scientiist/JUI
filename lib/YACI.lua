@@ -29,14 +29,15 @@ end
 
 local function newInstance(class, ...) 
 
-  local function makeInstance(class, virtuals)
-    local inst = duplicate(virtuals)
-    metaObj[inst] = { obj = inst, class = class }
+  local function makeInstance(class)
+    local inst = {}
+    --metaObj[inst] = { obj = inst, class = class }
   
     if class:super()~=nil then
-      inst.super = makeInstance(class:super(), virtuals)
-      metaObj[inst].super = metaObj[inst.super]	-- meta-info about inst
-      metaObj[inst.super].lower = metaObj[inst]
+      inst.super = makeInstance(class:super())
+      inst.class = class
+      --metaObj[inst].super = metaObj[inst.super]	-- meta-info about inst
+      --metaObj[inst.super].lower = metaObj[inst]
     else 
       inst.super = {}
     end 
@@ -46,26 +47,22 @@ local function newInstance(class, ...)
     return inst
   end
  
-  local inst = makeInstance(class, metaObj[class].virtuals) 
+  local inst = makeInstance(class) 
   inst:init(...)
   return inst
 end
 
------------------------------------------------------------------------------------
--- internal function 'makeVirtual'
-
-local function makeVirtual(class, fname) 
-  local func = class.static[fname]
-  if func == nil then 
-    func = function() error("Attempt to call an undefined abstract method '"..fname.."'") end
-   end
-  metaObj[class].virtuals[fname] = func
+local function destroyInstance(inst)
+  --metaObj[inst.super].lower = nil
+  --metaObj[inst.super] = nil
+ -- metaObj[inst] = nil
+  
 end
 
 -----------------------------------------------------------------------------------
 -- internal function 'trycast'
 -- try to cast an instance into an instance of one of its super- or subclasses
-
+--[[
 local function tryCast(class, inst) 
   local meta = metaObj[inst]
   if meta.class==class then return inst end -- is it already the right class?
@@ -103,7 +100,7 @@ local function classMade(class, obj)
   if metaObj[obj]==nil then return false end -- is this really an object?
   return (tryCast(class,obj) ~= nil) -- check if that class could cast the object
 end
-
+]]
 
 -----------------------------------------------------------------------------------
 -- internal function 'callup'
@@ -146,8 +143,8 @@ local function subclass(baseClass, name)
  
   inst_stuff.init = inst_init_def
   inst_stuff.__newindex = inst_newindex
+  inst_stuff.destroy = destroyInstance
   function inst_stuff.class() return theClass end
-
   function inst_stuff.__index(inst, key) -- Look for field 'key' in instance 'inst'
 	local res = inst_stuff[key] 		-- Is it present?
 	if res~=nil then return res end		-- Okay, return it
@@ -166,8 +163,8 @@ local function subclass(baseClass, name)
  
 
   local class_stuff = { static = inst_stuff, made = classMade, new = newInstance,
-	subclass = subclass, virtual = makeVirtual, cast = secureCast, trycast = tryCast }
-  metaObj[theClass] = { virtuals = duplicate(metaObj[baseClass].virtuals) }
+	subclass = subclass, cast = secureCast, trycast = tryCast}
+  --metaObj[theClass] = {}
   
   function class_stuff.name(class) return name end
   function class_stuff.super(class) return baseClass end
@@ -177,14 +174,14 @@ local function subclass(baseClass, name)
  
   local function newmethod(class, name, meth)
 	inst_stuff[name] = meth;
-	if metaObj[class].virtuals[name]~=nil then 
+	--[[if metaObj[class].virtuals[name]~=nil then 
 		metaObj[class].virtuals[name] = meth	
-	end
+	end]]
   end
   
   local function tos() return ("class "..name) end
   setmetatable(theClass, { __newindex = newmethod, __index = class_stuff, 
-	__tostring = tos, __call = newInstance } )
+	__tostring = tos})
  
   return theClass
 end
@@ -207,7 +204,7 @@ local obj_class_stuff = { static = obj_inst_stuff, made = classMade, new = newIn
 function obj_class_stuff.name(class) return "Object" end
 function obj_class_stuff.super(class) return nil end
 function obj_class_stuff.inherits(class, other) return false end
-metaObj[Object] = { virtuals={} }
+metaObj[Object] = {}
 
 local function tos() return ("class Object") end
 setmetatable(Object, { __newindex = obj_newitem, __index = obj_class_stuff, 
