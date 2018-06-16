@@ -1,4 +1,4 @@
-# JUI Library
+# JUI - jej's User Interface Lib
 A library that adds simple GUI elements for you to utilize in your Love2D games.
 
 ## Features
