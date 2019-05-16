@@ -1,7 +1,7 @@
-local UIRect = require("lib.classes.UIRect")
+local Label = require("lib.classes.Label")
 local Event = require("lib.classes.Event")
 
-local UIButton = UIRect:subclass("UIButton")
+local UIButton = Label:subclass("UIButton")
 
 function UIButton:init()
     self.super:init()

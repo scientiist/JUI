@@ -34,6 +34,8 @@ UIBase:new()  -- Unless otherwise specified, all UIBase object constructors take
 
 Methods:
 ```lua
+keypressPass(string key) -- use with love.keypressed function
+textinputPass(string t) -- use with love.textinput function
 render()
 update(number deltatime) -- deltatime should be passed from love.update function
 table<UIBase> getChildren()
