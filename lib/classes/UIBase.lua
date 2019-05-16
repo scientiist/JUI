@@ -45,8 +45,29 @@ function UIBase:init()
     self.isUIObject = true
     self.active = true
     self.children = {}
-    self.parent = nil
+	self.parent = nil
+	self.textInput = false
     self.baseReturnFont = love.graphics.newFont(12)
+end
+
+function UIBase:keypressPass(key)
+	for _, child in pairs(self.children) do
+		if child.isFocused and child.isFocused == true then
+			child:keypressed(key)
+			return true
+		end
+		child:keypressPass(key)
+	end
+end
+
+function UIBase:textinputPass(t)
+	for _, child in pairs(self.children) do
+		if child.isFocused and child.isFocused == true then
+			child:textinput(t)
+			return true
+		end
+		child:textinputPass(t)
+	end
 end
 
 function UIBase:renderChildren()
@@ -66,7 +87,9 @@ function UIBase:updateChildren(delta)
 end
 
 function UIBase:render()
+
 end
+
 function UIBase:update(delta)
     self:updateChildren(delta)
 end

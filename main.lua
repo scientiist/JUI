@@ -38,6 +38,8 @@ end
 
 JUI:parent(mainmenu, testSlider)
 JUI:parent(mainmenu, text)
+JUI:parent(mainmenu, bigBalls)
+
 
 local windowCreationSuccess
 local debugInfoString = ""

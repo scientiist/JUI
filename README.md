@@ -1,4 +1,7 @@
-# JUI Library
+# Josh's UI Library
+
+Of course, yet another Love2d GUI library.
+
 A library that adds simple GUI elements for you to utilize in your Love2D games.
 
 ## Features

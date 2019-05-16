@@ -2,7 +2,7 @@ local UIButton = require("lib.classes.UIButton")
 local Color = require("lib.datatypes.Color")
 
 local Button = UIButton:subclass("Button")
-
+--[[
 function Button:init()
     self.super:init()
     self.text = "Button"
@@ -78,5 +78,5 @@ function Button:render()
 
     self:renderChildren()
 end
-
+]]
 return Button

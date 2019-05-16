@@ -7,7 +7,8 @@ return {
     Frame        = require("lib.classes.Frame"),
     Label        = require("lib.classes.Label"),
     Button       = require("lib.classes.Button"),
-    Slider       = require("lib.classes.Slider"),
+	Slider       = require("lib.classes.Slider"),
+	InputForm    = require("lib.classes.InputForm"),
 
     -- Datatypes
     Vector2D     = require("lib.datatypes.Vector2D"),
