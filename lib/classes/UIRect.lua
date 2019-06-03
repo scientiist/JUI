@@ -58,7 +58,8 @@ function UIRect:init()
 
     -- events
     self.mouseEnter = Event:new()
-    self.mouseExit = Event:new()
+	self.mouseExit = Event:new()
+	
 end
 
 function UIRect:getBackgroundColor()
@@ -66,7 +67,8 @@ function UIRect:getBackgroundColor()
 end
 
 function UIRect:setBackgroundColor(color)
-    self.backgroundColor = color
+	self.backgroundColor = color
+	
 end
 
 function UIRect:getBorderColor()
@@ -78,11 +80,13 @@ function UIRect:getBorderWidth()
 end
 
 function UIRect:setBorderWidth(width)
-    self.borderWidth = width
+	self.borderWidth = width
+	
 end
 
 function UIRect:setBorderColor(color)
-    self.borderColor = color
+	self.borderColor = color
+	
 end
 
 function UIRect:getCornerRounding()
@@ -94,15 +98,18 @@ function UIRect:isMouseInside()
 end
 
 function UIRect:setCornerRounding(rounding)
-    self.cornerRounding = rounding
+	self.cornerRounding = rounding
+	
 end
 
 function UIRect:setPosition(newPosition)
-    self.position = newPosition
+	self.position = newPosition
+	
 end
 
 function UIRect:setSize(newSize)
-    self.size = newSize
+	self.size = newSize
+	
 end
 
 function UIRect:getPosition()
@@ -163,8 +170,8 @@ function UIRect:getAbsoluteSize()
     local parentAbsSize = parent:getAbsoluteSize()
     local parentAbsPos = parent:getAbsolutePosition()
 
-    local absoluteSizeX = size.x.pixel + parentAbsSize.x * size.x.scale
-    local absoluteSizeY = size.y.pixel + parentAbsSize.y * size.y.scale
+    local absoluteSizeX = size.x.pixel + (parentAbsSize.x * size.x.scale)
+    local absoluteSizeY = size.y.pixel + (parentAbsSize.y * size.y.scale)
 
     --return Vector2D:new(absoluteSizeX, absoluteSizeY)
     return {x = absoluteSizeX, y = absoluteSizeY}
@@ -179,8 +186,8 @@ function UIRect:getAbsolutePosition()
     local parentAbsSize = parent:getAbsoluteSize()
     local parentAbsPos = parent:getAbsolutePosition()
 
-    local absolutePosX = parentAbsPos.x + pos.x.pixel + parentAbsSize.x * pos.x.scale
-    local absolutePosY = parentAbsPos.y + pos.y.pixel + parentAbsSize.y * pos.y.scale
+    local absolutePosX = parentAbsPos.x + pos.x.pixel + (parentAbsSize.x * pos.x.scale)
+    local absolutePosY = parentAbsPos.y + pos.y.pixel + (parentAbsSize.y * pos.y.scale)
 
     --return Vector2D:new(absolutePosX, absolutePosY)
     return {x = absolutePosX, y = absolutePosY}

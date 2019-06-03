@@ -23,7 +23,18 @@ function InputForm:init()
 	self.cursor = "|"
 	self.cursorPos = 0
 	self.shift = false
+	self.grabFocusOnReturn = false
 end
+
+function InputForm:setGrabFocusOnReturn(val)
+	self.grabFocusOnReturn = val
+end
+
+function InputForm:setClearOnReturn(val)
+	self.clearOnReturn = val
+end
+
+
 
 function InputForm:reset()
 	self.cursorPos = 0
@@ -50,8 +61,11 @@ function InputForm:keypressed(key)
 		--print(self.internalText)
 		self.inputEvent:call(self.internalText)
 		self:dropFocus(true)
-		if self.clearOnReturnKey then
+		if self.clearOnReturn then
 			self:reset()
+		end
+		if self.grabFocusOnReturn then
+			self:grabFocus()
 		end
 	end
 end
@@ -117,7 +131,7 @@ function InputForm:render()
 	self.super:render()
 
 
-	self:renderChildren()
+	self:renderChildren(dt)
 end
 
 return InputForm

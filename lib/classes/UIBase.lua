@@ -1,7 +1,7 @@
 local newclass = require("lib.YACI")
 local Dimension = require("lib.datatypes.Dimension")
 local Vector2D = require("lib.datatypes.Vector2D")
-
+local Event = require("lib.classes.Event")
 --[[
     UIBase class
     
@@ -47,7 +47,9 @@ function UIBase:init()
     self.children = {}
 	self.parent = nil
 	self.textInput = false
-    self.baseReturnFont = love.graphics.newFont(12)
+	self.baseReturnFont = love.graphics.newFont(12)
+	
+	self.onupdate = Event:new()
 end
 
 function UIBase:keypressPass(key)
@@ -91,7 +93,8 @@ function UIBase:render()
 end
 
 function UIBase:update(delta)
-    self:updateChildren(delta)
+	self:updateChildren(delta)
+	self.onupdate:call(delta)
 end
 
 function UIBase:getName()
@@ -99,7 +102,7 @@ function UIBase:getName()
 end
 
 function UIBase:setName(name)
-    self.name = name
+	self.name = name
 end
 
 function UIBase:getChild(name)
@@ -142,7 +145,7 @@ function UIBase:getParent()
 end
 
 function UIBase:setParent(instance)
-    self.parent = instance
+	self.parent = instance
 end
 
 return UIBase

@@ -5,7 +5,7 @@ local UIButton = Label:subclass("UIButton")
 
 function UIButton:init()
     self.super:init()
-    self.mouseDown = true
+    self.mouseDown = false
     self.buttonActivationAnimation = ""
     self.buttonDeactivationAnimation = ""
 
